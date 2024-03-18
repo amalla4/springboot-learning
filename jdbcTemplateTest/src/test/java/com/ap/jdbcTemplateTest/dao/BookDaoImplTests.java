@@ -14,10 +14,8 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class BookDaoImplTests {
-
     @Mock
     private JdbcTemplate jdbcTemplate;
-
     @InjectMocks
     private BookDaoImpl underTest;
 
