@@ -1,4 +1,4 @@
-package com.ap.jdbcTemplateTest.dao;
+package com.ap.jdbcTemplateTest.dao.impl;
 
 import com.ap.jdbcTemplateTest.dao.impl.BookDaoImpl;
 import com.ap.jdbcTemplateTest.domain.Book;
