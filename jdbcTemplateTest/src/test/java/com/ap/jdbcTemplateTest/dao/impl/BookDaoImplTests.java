@@ -22,11 +22,11 @@ public class BookDaoImplTests {
 
     @Test
     public void testThatCreateBookGeneratesCorrectSql() {
-        Book book = TestDataUtil.createTestBook();
+        Book book = TestDataUtil.createTestBookA();
 
         underTest.create(book);
         verify(jdbcTemplate).update(
-                eq("INSERT INTO books (isbn, title, author)id) VALUES (?, ?, ?)"),
+                eq("INSERT INTO books (isbn, title, author_id) VALUES (?, ?, ?)"),
                 eq("123-4-5678-9999-0"),
                 eq("AP wrote a book."),
                 eq(1L)
@@ -35,11 +35,20 @@ public class BookDaoImplTests {
 
     @Test
     public void testThatFindOneBookGeneratesCorrectSql(){
-        underTest.find("123-4-5678-9999-0");
+        underTest.findOne("123-4-5678-9999-0");
         verify(jdbcTemplate).query(
                 eq("SELECT isbn, title, author_id from books WHERE isbn = ? LIMIT 1"),
                 ArgumentMatchers.<BookDaoImpl.BookRowMapper>any(),
                 eq("123-4-5678-9999-0")
+        );
+    }
+
+    @Test
+    public void testThatFindGeneratesCorrectSql(){
+        underTest.find();
+        verify(jdbcTemplate).query(
+                eq("SELECT isbn, title, author_id from books"),
+                ArgumentMatchers.<BookDaoImpl.BookRowMapper>any()
         );
     }
 }
