@@ -20,6 +20,8 @@ public class BookDaoImplTests {
     @InjectMocks
     private BookDaoImpl underTest;
 
+
+    //====================== CREATE TESTS ===========================//
     @Test
     public void testThatCreateBookGeneratesCorrectSql() {
         Book book = TestDataUtil.createTestBookA();
@@ -33,6 +35,7 @@ public class BookDaoImplTests {
         );
     }
 
+    //====================== READ TESTS ===========================//
     @Test
     public void testThatFindOneBookGeneratesCorrectSql(){
         underTest.findOne("123-4-5678-9999-0");
@@ -51,4 +54,9 @@ public class BookDaoImplTests {
                 ArgumentMatchers.<BookDaoImpl.BookRowMapper>any()
         );
     }
+
+    //====================== UPDATE TESTS ===========================//
+
+    //====================== DELETE TESTS ===========================//
+
 }

@@ -20,6 +20,7 @@ public class AuthorDaoImplTests {
     @InjectMocks
     private AuthorDaoImpl underTest;
 
+//====================== CREATE TESTS ===========================//
     @Test
     public void testThatCreateAuthorGeneratesCorrectSql(){
         Author author = TestDataUtil.createTestAuthorA();
@@ -31,6 +32,7 @@ public class AuthorDaoImplTests {
         );
     }
 
+//====================== READ TESTS ===========================//
     @Test
     public void testThatFindsOneGeneratesCorrectSql(){
         underTest.findOne(1L);
@@ -49,4 +51,19 @@ public class AuthorDaoImplTests {
                 ArgumentMatchers.<AuthorDaoImpl.AuthorRowMapper>any()
         );
     }
+
+//====================== UPDATE TESTS ===========================//
+    @Test
+    public void testThatUpdateGeneratesCorrectSql(){
+        Author author = TestDataUtil.createTestAuthorA();
+        underTest.update(author);
+
+        verify(jdbcTemplate).update(
+                "UPDATE authors SET id=?, name=?, age=? WHERE id=?",
+                1L, "AP Malla", 27, 1L
+        );
+    }
+
+
+//====================== DELETE TESTS ===========================//
 }
