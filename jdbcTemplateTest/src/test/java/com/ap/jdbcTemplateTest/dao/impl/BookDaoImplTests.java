@@ -56,6 +56,16 @@ public class BookDaoImplTests {
     }
 
     //====================== UPDATE TESTS ===========================//
+    @Test
+    public void testThatUpdateGeneratesCorrectSql(){
+        Book book = TestDataUtil.createTestBookA();
+        underTest.update("123-4-5678-9999-0", book);
+
+        verify(jdbcTemplate).update(
+                "UPDATE books SET isbn=?, title=?, author_id=? WHERE isbn=?",
+                "123-4-5678-9999-0", "AP wrote a book.", 1L, "123-4-5678-9999-0"
+        );
+    }
 
     //====================== DELETE TESTS ===========================//
 
