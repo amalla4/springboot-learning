@@ -7,12 +7,9 @@ import java.util.Optional;
 
 public interface AuthorDao {
     void create(Author author);
-    //using Optional for more type safety?
-    //if id returns author - wrapped in Optional
-    // if id does not have author - empty wrapped in Optional
+    //Optional<> for type safety: if id returns author-wrapped in Optional, else-empty wrapped in Optional
     Optional<Author> findOne(long l);
-
     List<Author> find();
-
     void update(long id, Author author);
+    void delete(long id);
 }
