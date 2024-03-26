@@ -12,14 +12,14 @@
 	<artifactId>springJPAHibernate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springJPAHibernate</name>
-	<description>Demo project for testing JDBC Templates</description>
+	<description>Demo project for Spring JPA using Hibernate</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
 		<dependency>
