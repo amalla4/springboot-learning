@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AuthorController {
-
     private AuthorService authorService;
     private Mapper<AuthorEntity, AuthorDto> authorMapper;
 
@@ -27,5 +26,4 @@ public class AuthorController {
         AuthorEntity savedAuthorEntity = authorService.createAuthor(authorEntity);
         return new ResponseEntity<>(authorMapper.mapTo(savedAuthorEntity), HttpStatus.CREATED) ;
     }
-
 }
