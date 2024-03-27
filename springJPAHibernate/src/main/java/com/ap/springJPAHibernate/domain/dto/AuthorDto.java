@@ -1,6 +1,5 @@
-package com.ap.springJPAHibernate.domain;
+package com.ap.springJPAHibernate.domain.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,11 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-@Table(name="authors")
-public class Author {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_id_seq")
+public class AuthorDto {
+
     private Long id;
     private String name;
     private Integer age;
