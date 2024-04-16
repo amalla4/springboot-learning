@@ -1,5 +1,7 @@
 package com.ap.springJPAHibernate;
 
+import com.ap.springJPAHibernate.domain.dto.AuthorDto;
+import com.ap.springJPAHibernate.domain.dto.BookDto;
 import com.ap.springJPAHibernate.domain.entities.AuthorEntity;
 import com.ap.springJPAHibernate.domain.entities.BookEntity;
 
@@ -19,8 +21,12 @@ public final class TestDataUtil {
         return AuthorEntity.builder().id(3L).name("Cray Zee").age(69).build();
     }
 
-    public static BookEntity createTestBookA(final AuthorEntity authorEntity) {
+    public static BookEntity createTestBookEntityA(final AuthorEntity authorEntity) {
         return BookEntity.builder().isbn("123-4-5678-9999-0").title("AP wrote a book.").authorEntity(authorEntity).build();
+    }
+
+    public static BookDto createTestBookDtoA(final AuthorDto author) {
+        return BookDto.builder().isbn("123-4-5678-9999-0").title("AP wrote a book.").author(author).build();
     }
 
     public static BookEntity createTestBookB(final AuthorEntity authorEntity) {
