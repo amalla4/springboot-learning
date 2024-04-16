@@ -43,4 +43,20 @@ public class BookControllerIntegrationTests {
                 MockMvcResultMatchers.status().isCreated()
         );
     }
+
+    @Test
+    public void testThatCreateBookReturnsCreatedBook() throws Exception{
+        BookDto bookDto = TestDataUtil.createTestBookDtoA(null);
+        String createBookJson = objectMapper.writeValueAsString(bookDto);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/books/"+bookDto.getIsbn())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(createBookJson)
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.isbn").value(bookDto.getIsbn())
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.title").value(bookDto.getTitle())
+        );
+    }
 }
